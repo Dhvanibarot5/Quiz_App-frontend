@@ -5,7 +5,6 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 const QuizGame = () => {
   const navigate = useNavigate();
 
-  // Large pool of web development questions
   const allQuestions = [
     {
       questionText: "What does HTML stand for?",
@@ -62,10 +61,63 @@ const QuizGame = () => {
         { answerText: "To route between pages", isCorrect: false },
       ],
     },
-    // Add more questions here...
+    {
+      questionText: "What is the correct way to declare a variable in JavaScript that cannot be reassigned?",
+      category: "JavaScript",
+      difficulty: "Medium",
+      answerOptions: [
+        { answerText: "const", isCorrect: true },
+        { answerText: "let", isCorrect: false },
+        { answerText: "var", isCorrect: false },
+        { answerText: "static", isCorrect: false },
+      ],
+    },
+    {
+      questionText: "Which CSS property is used to create space between the element's border and inner content?",
+      category: "CSS",
+      difficulty: "Medium",
+      answerOptions: [
+        { answerText: "padding", isCorrect: true },
+        { answerText: "margin", isCorrect: false },
+        { answerText: "spacing", isCorrect: false },
+        { answerText: "border-spacing", isCorrect: false },
+      ],
+    },
+    {
+      questionText: "What hook would you use in React to store data that persists between renders but doesn't cause re-renders?",
+      category: "React",
+      difficulty: "Hard",
+      answerOptions: [
+        { answerText: "useRef", isCorrect: true },
+        { answerText: "useState", isCorrect: false },
+        { answerText: "useEffect", isCorrect: false },
+        { answerText: "useMemo", isCorrect: false },
+      ],
+    },
+    {
+      questionText: "Which HTML5 tag is used to specify a footer for a document or section?",
+      category: "HTML",
+      difficulty: "Easy",
+      answerOptions: [
+        { answerText: "<footer>", isCorrect: true },
+        { answerText: "<bottom>", isCorrect: false },
+        { answerText: "<end>", isCorrect: false },
+        { answerText: "<section>", isCorrect: false },
+      ],
+    },
+    {
+      questionText: "What is the purpose of the JavaScript 'map' array method?",
+      category: "JavaScript",
+      difficulty: "Medium",
+      answerOptions: [
+        { answerText: "Creates a new array with the results of calling a function for every array element", isCorrect: true },
+        { answerText: "Modifies the original array by adding new elements", isCorrect: false },
+        { answerText: "Filters out elements from an array", isCorrect: false },
+        { answerText: "Sorts the elements of an array", isCorrect: false },
+      ],
+    },
   ];
 
-  // Function to shuffle array
   const shuffleArray = (array) => {
     const shuffled = [...array];
     for (let i = shuffled.length - 1; i > 0; i--) {
@@ -75,7 +127,6 @@ const QuizGame = () => {
     return shuffled;
   };
 
-  // State for quiz
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
@@ -90,7 +141,6 @@ const QuizGame = () => {
   });
   const [showStart, setShowStart] = useState(true);
 
-  // Initialize quiz with random questions
   useEffect(() => {
     const shuffledQuestions = shuffleArray(allQuestions).slice(0, 15);
     setQuestions(shuffledQuestions);
@@ -255,7 +305,6 @@ const QuizGame = () => {
           </div>
 
           <div className="px-6 py-8">
-            {/* Score Circle */}
             <div className="flex justify-center mb-8">
               <div className="relative w-48 h-48">
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -286,7 +335,6 @@ const QuizGame = () => {
               </div>
             </div>
 
-            {/* Detailed Stats */}
             <div className="grid grid-cols-3 gap-4 mb-8">
               <div className="bg-green-50 p-4 rounded-xl text-center">
                 <span className="block text-2xl font-bold text-green-600">{quizStats.correct}</span>
@@ -302,7 +350,6 @@ const QuizGame = () => {
               </div>
             </div>
 
-            {/* Action Buttons */}
             <div className="flex flex-col space-y-4">
               <button
                 onClick={() => window.location.reload()}
